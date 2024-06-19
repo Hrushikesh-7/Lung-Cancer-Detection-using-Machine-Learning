@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung Cancer Prediction</title>
+</head>
+<body>
+    <h1>Lung Cancer Prediction</h1>
+    <h3>User has to enter every attribute for prediction(Input 1 for Yes and 2 for No)</h3>
+    <form action="/predict" method="post">
+        <!-- Input fields for the specified features -->
+        <label for="gender">Gender (1 for Male or 2 for Female):</label>
+        <input type="text" id="gender" name="gender" required><br><br>
+
+        <label for="age">Age (In Years):</label>
+        <input type="number" id="age" name="age" required><br><br>
+
+        <label for="smoking">Smoking (Yes/No):</label>
+        <input type="text" id="smoking" name="smoking" required><br><br>
+
+        <label for="yellow_fingers">Yellow Fingers (Yellow discoloration of fingers due to smoking) (Yes/No):</label>
+        <input type="text" id="yellow_fingers" name="yellow_fingers" required><br><br>
+
+        <label for="anxiety">Anxiety (Yes/No):</label>
+        <input type="text" id="anxiety" name="anxiety" required><br><br>
+
+        <label for="peer_pressure">Peer Pressure (Pressure from peers influencing behavior) (Yes/No):</label>
+        <input type="text" id="peer_pressure" name="peer_pressure" required><br><br>
+
+        <label for="chronic_disease">Chronic Disease (Pre-existing long-term medical condition) (Yes/No):</label>
+        <input type="text" id="chronic_disease" name="chronic_disease" required><br><br>
+
+        <label for="fatigue">Fatigue (Feeling of tiredness or exhaustion) (Yes/No):</label>
+        <input type="text" id="fatigue" name="fatigue" required><br><br>
+
+        <label for="allergy">Allergy (Yes/No):</label>
+        <input type="text" id="allergy" name="allergy" required><br><br>
+
+        <label for="wheezing">Wheezing (High-pitched whistling sound while breathing) (Yes/No):</label>
+        <input type="text" id="wheezing" name="wheezing" required><br><br>
+
+        <label for="alcohol_consuming">Alcohol Consuming (Yes/No):</label>
+        <input type="text" id="alcohol_consuming" name="alcohol_consuming" required><br><br>
+
+        <label for="coughing">Coughing (Yes/No):</label>
+        <input type="text" id="coughing" name="coughing" required><br><br>
+
+        <label for="shortness_of_breath">Shortness of Breath (Difficulty in breathing) (Yes/No):</label>
+        <input type="text" id="shortness_of_breath" name="shortness_of_breath" required><br><br>
+
+        <label for="swallowing_difficulty">Swallowing Difficulty (Yes/No):</label>
+        <input type="text" id="swallowing_difficulty" name="swallowing_difficulty" required><br><br>
+
+        <label for="chest_pain">Chest Pain (Yes/No):</label>
+        <input type="text" id="chest_pain" name="chest_pain" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    <script>
+        // Function to validate input and convert to line type
+        function validateInput(input) {
+            if (input.trim().toLowerCase() === 'yes' || input.trim() === '1') {
+                return '1'; // Yes
+            } else if (input.trim().toLowerCase() === 'no' || input.trim() === '2') {
+                return '2'; // No
+            } else {
+                alert('Invalid input! Please enter "Yes" or "No" or "1" or "2".');
+                return false;
+            }
+        }
+
+        // Add event listeners for input fields to validate
+        document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('change', function() {
+                const lineType = validateInput(this.value);
+                if (lineType !== false) {
+                    this.value = lineType;
+                } else {
+                    this.value = ''; // Clear input if invalid
+                }
+            });
+        });
+    </script>
+</body>
+</html>
